@@ -1,5 +1,5 @@
 provider "aws" {
-    region = ""
+    region = "us-east-1e"
 }
 
 #creating security group, allow ssh and http
@@ -34,9 +34,9 @@ resource "aws_security_group" "hello-ip-ssh-http" {
 resource "aws_instance" "hello-ip" {
     ami = ""
     instance_type = "t2.micro"
-    availability_zone = ""
+    availability_zone = "us-east-1e"
     security_groups = ["${aws_security_group.hello-ip-ssh-http.name}"]
-    key_name = ""
+    key_name = "aws_connect_key"
     user_data = <<-EOF
         #!/bin/bash
         sudo yum install httpd -y
